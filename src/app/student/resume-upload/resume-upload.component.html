@@ -1,0 +1,36 @@
+<form [formGroup]="resumeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <div *ngIf="resumeForm.get('email')?.invalid && resumeForm.get('email')?.touched">
+        Please enter a valid email.
+      </div>
+    </div>
+  
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" />
+      <div *ngIf="resumeForm.get('name')?.invalid && resumeForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="resumeNo">Resume Number:</label>
+      <input type="text" id="resumeNo" formControlName="resumeNo" />
+      <div *ngIf="resumeForm.get('resumeNo')?.invalid && resumeForm.get('resumeNo')?.touched">
+        Resume number is required.
+      </div>
+    </div>
+  
+    <div>
+      <label for="resumeFile">Upload Resume:</label>
+      <input type="file" id="resumeFile" (change)="onFileChange($event)" />
+      <div *ngIf="resumeForm.get('resumeFile')?.invalid && resumeForm.get('resumeFile')?.touched">
+        Please upload a resume.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="resumeForm.invalid">Submit</button>
+  </form>
+  

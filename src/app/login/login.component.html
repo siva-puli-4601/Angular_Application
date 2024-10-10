@@ -1,0 +1,32 @@
+<body>
+  <div class="container">
+    <div class="form-wrapper">
+      <form [formGroup]="ReactiveForm" (ngSubmit)="onSubmit()">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="ReactiveForm.get('email')?.invalid && ReactiveForm.get('email')?.touched">
+          <small *ngIf="ReactiveForm.get('email')?.errors?.required">Please enter an email</small>
+          <small *ngIf="ReactiveForm.get('email')?.errors?.mailError">{{ReactiveForm.get('email')?.errors?.mailError.value}} not a valid email</small>
+        </div><br>
+
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" />
+        <div *ngIf="ReactiveForm.get('password')?.invalid && ReactiveForm.get('password')?.touched">
+          <small *ngIf="ReactiveForm.get('password')?.errors?.required">Please enter a password</small>
+          <small *ngIf="ReactiveForm.get('password')?.errors?.mailError">{{ReactiveForm.get('password')?.errors?.mailError.value}} not a valid password</small>
+        </div><br>
+
+        <button type="submit" [disabled]="ReactiveForm.invalid">Submit</button>
+      </form>
+
+      <!-- Add a link to the registration page -->
+      <div class="register-wrapper">
+        <p>Don't have an account? <a routerLink="/register" class="register-link">Register here</a></p>
+      </div>
+    </div>
+
+    <div class="gif-wrapper">
+      <img src="/assets/spy.gif" alt="Animated GIF" />
+    </div>
+  </div>
+</body>

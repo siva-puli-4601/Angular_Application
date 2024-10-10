@@ -1,0 +1,37 @@
+<div class="form-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div>
+      <label for="skills">Enter Skills (comma-separated):</label>
+      <input type="text" id="skills" formControlName="skills" />
+    </div>
+    <div>
+      <label for="limit">Number of Candidates to Show:</label>
+      <input type="number" id="limit" formControlName="limit" min="1" />
+    </div>
+    <button type="submit" [disabled]="searchForm.invalid">Search</button>
+  </form>
+</div>
+
+<!-- Logging / Emoji Feedback Section -->
+<div class="loading-container">
+  <div *ngIf="isLoading">
+    <img src="./assets/Fidget-spinner.gif">
+  </div>  <!-- Display while loading -->
+ 
+</div>
+
+<div class="results-container" *ngIf="searchResults.length > 0">
+  <h3>Search Results:</h3>
+  <ul>
+    <li *ngFor="let result of searchResults" [ngClass]="{
+      'excellent': result.score > 0.5,
+      'good': result.score <= 0.5 && result.score > 0.4,
+      'needs-improvement': result.score <= 0.3
+    }">
+      {{ result.email }} - <strong>{{ result.score | number:'1.2-2' }}</strong>
+      <span *ngIf="result.score > 0.5">🌟 Excellent!</span>
+      <span *ngIf="result.score <= 0.5 && result.score > 0.4">👍 Good</span>
+      <span *ngIf="result.score <= 0.3">👎 Needs Improvement</span>
+    </li>
+  </ul>
+</div>

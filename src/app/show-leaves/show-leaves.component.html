@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Reason</th>
+        <th>Leave Type</th>
+        <th>Actions</th> <!-- Added Actions header -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leave of leaveData">
+        <td>{{ leave.username }}</td>
+        <td>{{ leave.mail }}</td>
+        <td>{{ leave.startdate | date }}</td>
+        <td>{{ leave.enddate | date }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>{{ leave.leavetype }}</td>
+        <td>{{ leave.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

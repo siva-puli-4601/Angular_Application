@@ -1,0 +1,100 @@
+/* Container for the timesheets table */
+.timesheets-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Timesheets table styling */
+  .timesheets-table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Table header styling */
+  .timesheets-table thead {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .timesheets-table th {
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  /* Table body styling */
+  .timesheets-table td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Alternate row styling */
+  .timesheets-table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Hover effect on rows */
+  .timesheets-table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
+  /* Status label styles */
+  .status-approved {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .status-pending {
+    color: #ffc107;
+    font-weight: bold;
+  }
+  
+  .status-rejected {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .timesheets-table, .timesheets-table thead, .timesheets-table tbody, .timesheets-table th, .timesheets-table td, .timesheets-table tr {
+      display: block;
+    }
+  
+    .timesheets-table th, .timesheets-table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .timesheets-table th::before, .timesheets-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      padding-left: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  
+    .timesheets-table th {
+      background-color: transparent;
+      color: #333;
+    }
+  
+    .timesheets-table tbody tr {
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ddd;
+    }
+  }
+  

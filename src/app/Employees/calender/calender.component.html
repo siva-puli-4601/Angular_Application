@@ -1,0 +1,19 @@
+<div class="calendar">
+    <div class="calendar-header">
+      <button (click)="previousMonth()">&lt;</button>
+      <h2>{{ months[currentMonth] }} {{ currentYear }}</h2>
+      <button (click)="nextMonth()">&gt;</button>
+    </div>
+    <div class="calendar-body">
+      <div class="weekdays">
+        <div *ngFor="let day of weekDays">{{ day }}</div>
+      </div>
+      <div class="days">
+        <div *ngFor="let day of daysInMonth; let i = index"
+             [ngClass]="{'holiday': isHoliday(day)}">
+          {{ day }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

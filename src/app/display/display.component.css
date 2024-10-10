@@ -1,0 +1,23 @@
+/* src/app/display/display.component.css */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    margin-top: 0;
+  }
+  
+  .card p {
+    margin: 0.5rem 0;
+  }
+  

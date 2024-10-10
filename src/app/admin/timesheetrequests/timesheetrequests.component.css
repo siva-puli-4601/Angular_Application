@@ -1,0 +1,120 @@
+/* Container for the table */
+.table-container {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f4ff, #dff0e8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Timesheet table styling */
+  .timesheet-table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Table header styling */
+  .timesheet-table thead {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .timesheet-table th {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  /* Table body styling */
+  .timesheet-table td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Alternate row styling */
+  .timesheet-table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .timesheet-table tbody tr:nth-child(even) {
+    background-color: #e9ffe8;
+  }
+  
+  /* Hover effect on rows */
+  .timesheet-table tbody tr:hover {
+    background-color: #d4edda;
+    transition: background-color 0.3s;
+  }
+  
+  /* Button styling */
+  .actions .btn-accept {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .actions .btn-accept:hover {
+    background-color: #218838;
+  }
+  
+  .actions .btn-reject {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .actions .btn-reject:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .timesheet-table, .timesheet-table thead, .timesheet-table tbody, .timesheet-table th, .timesheet-table td, .timesheet-table tr {
+      display: block;
+    }
+  
+    .timesheet-table th, .timesheet-table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .timesheet-table th::before, .timesheet-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      padding-left: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  
+    .timesheet-table th {
+      background-color: transparent;
+      color: #333;
+    }
+  
+    .timesheet-table tbody tr {
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ddd;
+    }
+  }
+  

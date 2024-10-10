@@ -1,0 +1,37 @@
+/* user-profile.component.css */
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-title {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-item {
+    margin-bottom: 15px;
+  }
+  
+  .profile-item label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .profile-item span {
+    display: inline-block;
+    margin-left: 10px;
+    color: #333;
+    font-size: 16px;
+  }
+  

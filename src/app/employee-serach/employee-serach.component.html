@@ -1,0 +1,19 @@
+<div class="search-container">
+    <input type="text" [(ngModel)]="search" (input)="onSearchChange($event)" placeholder="Search..." class="search-input">
+  </div>
+  
+  <div class="employee-cards">
+    <div *ngFor="let record of records" class="employee-card">
+      <img [src]="record.profilePicture" alt="Profile Picture" class="profile-pic">
+      <div class="employee-info">
+        <h3 class="username">{{ record.username }}</h3>
+        <p class="email">{{ record.email }}</p>
+        <p class="role">{{ record.role }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading-indicator">
+    Loading...
+  </div>
+  

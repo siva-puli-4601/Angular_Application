@@ -1,0 +1,57 @@
+<div class="timesheet-container">
+    <!-- Timesheet Header -->
+    <div class="timesheet-header">
+      <div class="controls">
+        <!-- Datepicker Trigger -->
+        <mat-form-field appearance="outline">
+          <mat-label>Select Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (dateChange)="onDateSelected($event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button class="btn-control" (click)="downloadReport()">
+          <i class="fa fa-download"></i>
+        </button>
+        <button class="btn-control" (click)="previousWeek()">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <button class="btn-control" (click)="nextWeek()">
+          <i class="fa fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Timesheet Body -->
+    <div class="timesheet-body">
+      <div class="day-entries">
+        <div class="day-entry" *ngFor="let day of weekDates; let i = index">
+          <span class="day-label">{{ day | date: 'EEE' }} ({{ day | date: 'MMM dd' }})</span>
+          <input
+            type="number"
+            class="hour-input"
+            [(ngModel)]="dayEntries[i]"
+            placeholder="Enter hours"
+            min="0"
+            max="24"
+          />
+        </div>
+      </div>
+      <div class="total-time">
+        <strong>{{ totalHours() }} hrs</strong> reported <br />
+      </div>
+      <!-- Submit Button -->
+      <button class="btn-submit" (click)="submitTimesheet()">
+        Submit Timesheet
+      </button><br>
+      <a [routerLink]="'/' + role + '/timesheetshow'" class="show-timesheets-link">Show Timesheets</a>
+
+    </div>
+  </div>
+  

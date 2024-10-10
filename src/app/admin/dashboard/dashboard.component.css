@@ -1,0 +1,64 @@
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 20px;
+  }
+  
+  /* Grid Item */
+  .grid-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd; /* Optional: adds a border around each item */
+  }
+  
+  /* Image Styling */
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .grid-item:hover img {
+    transform: scale(1.05); /* Zoom effect on hover */
+  }
+  
+  /* Caption Styling */
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .grid-item:hover .caption {
+    background: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+  }
+  
+  /* Company Info */
+  .company-info {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd; /* Optional: adds a border around the company info */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .company-info h2 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  .company-info p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  

@@ -1,0 +1,27 @@
+<div class="timesheets-container">
+    <table class="timesheets-table">
+      <thead>
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Total Hours</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timesheet of timesheets">
+          <td>{{ DateConversion(timesheet.startdate) | date  }}</td>
+          <td>{{  DateConversion(timesheet.enddata) | date }}</td>
+          <td>{{  timesheet.totalhours}}</td>
+          <td [ngClass]="{
+                'status-approved': timesheet.status === 'accepted',
+                'status-pending': timesheet.status === 'submitted',
+                'status-rejected': timesheet.status === 'rejected'
+              }">
+            {{ timesheet.status }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

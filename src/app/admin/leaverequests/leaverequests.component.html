@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Reason</th>
+        <th>Leave Type</th>
+        <th>Actions</th> <!-- Added Actions header -->
+      </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let leave of leaveData">
+      <tr *ngIf="leave.status==='submitted'">
+       <!-- <tr *ngIf="leave.status==='submitted'">  -->
+        <td>{{ leave.username }}</td>
+        <td>{{ leave.mail }}</td>
+        <td>{{ leave.startdate | date }}</td>
+        <td>{{ leave.enddate | date }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>{{ leave.leavetype }}</td>
+        <td>
+          <button class="accept-button" (click)="acceptLeave(leave.mail)">Accept</button>
+          <button class="reject-button" (click)="rejectLeave(leave.mail)">Reject</button>
+        </td>
+      </tr>
+    <!-- </tr> -->
+</ng-container>
+    </tbody>
+  </table>
+  

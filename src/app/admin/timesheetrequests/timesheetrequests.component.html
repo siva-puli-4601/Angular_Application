@@ -1,0 +1,34 @@
+<div class="table-container">
+    <table class="timesheet-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Total Hours</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let user of users">
+        <tr *ngIf="user.status==='submitted'">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ DateCast(user.startdate) | date }}</td>
+          <td>{{ DateCast(user.enddata) | date }}</td>
+          <td>{{ user.totalhours }}</td>
+          <td class="actions">
+            <button class="btn-accept" (click)="acceptTimesheet(user.id)">
+              Accept
+            </button>
+            <button class="btn-reject" (click)="rejectTimesheet(user.id)">
+              Reject
+            </button>
+          </td>
+        </tr>
+    </ng-container>
+      </tbody>
+    </table>
+  </div>
+  

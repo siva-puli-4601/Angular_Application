@@ -1,0 +1,32 @@
+<header>
+  <div class="header-container">
+    <!-- Left Side -->
+    <div class="left-side">
+      <h1 class="logo">Mini Hubble</h1>
+      <div *ngIf="islogin">
+        <a [routerLink]="'/'+user" class="header-link">DashBoard</a>
+      </div>
+    </div>
+
+    <!-- Center Content -->
+    
+
+    <!-- Right Side -->
+    <div class="right-side">
+      <div *ngIf="!islogin">
+        <a [routerLink]="['/register']" class="header-link">Sign Up</a>
+        <a [routerLink]="['/login']" class="header-link">Sign In</a>
+      </div>
+      <div class="profile-container" *ngIf="islogin">
+        <img *ngIf="profilePic" [src]="profilePic" alt="Profile Photo" class="profile-photo" (click)="toggleDropdown()"/>
+        <div *ngIf="profilePic" class="profile-info">
+          <p class="username">{{username}}</p>
+        </div>
+        <div *ngIf="dropdownVisible" class="dropdown-menu">
+          <a [routerLink]="['/profile']" class="dropdown-item">View Profile</a>
+          <button (click)="logOut()" class="dropdown-item">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
