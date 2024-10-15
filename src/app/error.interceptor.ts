@@ -13,10 +13,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(private router:Router) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler):any {
+  intercept(request: HttpRequest<any>, next: HttpHandler):Observable<any> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401 && request.url.includes('/login')) {
+          
           this.router.navigate(['/login'])
         }
        else if (error.status >= 400 && error.status < 500) {

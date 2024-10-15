@@ -1,8 +1,7 @@
 <table class="table">
     <thead>
       <tr>
-        <th>Username</th>
-        <th>Email</th>
+       
         <th>Start Date</th>
         <th>End Date</th>
         <th>Reason</th>
@@ -12,8 +11,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let leave of leaveData">
-        <td>{{ leave.username }}</td>
-        <td>{{ leave.mail }}</td>
+        
         <td>{{ leave.startdate | date }}</td>
         <td>{{ leave.enddate | date }}</td>
         <td>{{ leave.reason }}</td>

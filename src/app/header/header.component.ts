@@ -45,6 +45,8 @@ logOut()
     localStorage.removeItem('username');
     localStorage.removeItem('profile');
     localStorage.removeItem('role');
+    localStorage.removeItem('email');
+    localStorage.removeItem('theme');
     this.value=false;
     this.route.navigate(['/login']);
   }
