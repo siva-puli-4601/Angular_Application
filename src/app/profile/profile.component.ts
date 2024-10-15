@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
     const email=localStorage.getItem('email');
     const send={"email":email};
     this.ser.postApi("profile",send).subscribe((data:any)=>{
-      
+      console.log(data.message);
       this.userData=data.message;
     },
   (err)=>
@@ -23,6 +23,15 @@ export class ProfileComponent implements OnInit {
     console.log("ding ding");
     
   })
+  }
+  showModal = false;
+
+  openImageModal() {
+    this.showModal = true;
+  }
+
+  closeImageModal() {
+    this.showModal = false;
   }
 
 }

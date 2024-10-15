@@ -1,19 +1,32 @@
-<!-- user-profile.component.html -->
+
 <div class="profile-container">
-    <h1 class="profile-title">User Profile</h1>
-    <div class="profile-info">
+  <h1 class="profile-title">User Profile</h1>
+  <div class="profile-photo">
+    <img [src]="userData.profile" 
+         alt="Profile Photo" 
+         class="profile-image" 
+         (click)="openImageModal()"/>
+  </div>
+  <div class="profile-info">
       <div class="profile-item">
-        <label for="username">Username:</label>
-        <span id="username">{{ userData.username }}</span>
+          <label for="username">Username:</label>
+          <span id="username">{{ userData.username }}</span>
       </div>
       <div class="profile-item">
-        <label for="role">Role:</label>
-        <span id="role">{{ userData.role }}</span>
+          <label for="role">Role:</label>
+          <span id="role">{{ userData.role }}</span>
       </div>
       <div class="profile-item">
-        <label for="email">Email:</label>
-        <span id="email">{{ userData.email }}</span>
+          <label for="email">Email:</label>
+          <span id="email">{{ userData.email }}</span>
       </div>
+  </div>
+
+  
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeImageModal()">&times;</span>
+      <img [src]="userData.profile" alt="Full Profile Photo" class="full-image"/>
     </div>
   </div>
-  
+</div>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class DataService {
 
  constructor(private http: HttpClient) { }
- url=`http://172.17.10.128:3000/api/users1/`;
+ url=`http://172.17.10.128:8000/api/users1/`;
 //  url1="http://172.17.10.128:3000/"
  postApi(msg:any,data:any):Observable<any>
   {

@@ -4,7 +4,7 @@
   
   <div class="employee-cards">
     <div *ngFor="let record of records" class="employee-card">
-      <img [src]="record.profilePicture" alt="Profile Picture" class="profile-pic">
+      <img [src]="record.profile" alt="Profile Picture" class="profile-pic">
       <div class="employee-info">
         <h3 class="username">{{ record.username }}</h3>
         <p class="email">{{ record.email }}</p>
