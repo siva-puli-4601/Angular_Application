@@ -18,7 +18,7 @@ export class ErrorComponent implements OnInit {
     });
   }
 
-  goBack(): void {
-    this.router.navigate(['/']); // Navigate to home or a specific page
-  }
+  // goBack(): void {
+  //   this.router.navigate(['/']); // Navigate to home or a specific page
+  // }
 }

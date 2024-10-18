@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'assign';
+
+  // name:string="";
+  // list:(string|number)[]=["siva",1] //union
+  // list1:[string,number,{}]=["siva",1,{a:1}]; //tuple
+  
+
 }

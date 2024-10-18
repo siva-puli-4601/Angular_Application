@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DisplayComponent implements OnInit {
   ele:any;
   constructor(private route:ActivatedRoute) { }
- type:any;
+ type:string="";
   ngOnInit(): void {
    this.ele=this.route.snapshot.data['data'];
    console.log(this.ele);

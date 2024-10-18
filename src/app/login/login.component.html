@@ -2,14 +2,14 @@
   <div class="container">
     <div class="form-wrapper">
       <form [formGroup]="ReactiveForm" (ngSubmit)="onSubmit()">
-        <label for="email">Email</label>
+        <label for="email">Email...</label>
         <input id="email" formControlName="email" type="email" />
         <div *ngIf="ReactiveForm.get('email')?.invalid && ReactiveForm.get('email')?.touched">
           <small *ngIf="ReactiveForm.get('email')?.errors?.required">Please enter an email</small>
           <small *ngIf="ReactiveForm.get('email')?.errors?.mailError">{{ReactiveForm.get('email')?.errors?.mailError.value}} not a valid email</small>
         </div><br>
 
-        <label for="password">Password</label>
+        <label for="password">Password...</label>
         <input id="password" formControlName="password" type="password" />
         <div *ngIf="ReactiveForm.get('password')?.invalid && ReactiveForm.get('password')?.touched">
           <small *ngIf="ReactiveForm.get('password')?.errors?.required">Please enter a password</small>

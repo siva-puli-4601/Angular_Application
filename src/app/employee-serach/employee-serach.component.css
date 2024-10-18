@@ -73,11 +73,62 @@
   }
   
   /* Loading indicator styling */
+  
   .loading-indicator {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 18px;
-    color: #007bff;
-    font-weight: bold;
+    position: fixed; /* Keeps the loader in the center of the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3); /* Adds a semi-transparent background */
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Ensures it stays on top of other elements */
+}
+
+.loading-indicator img {
+    width: 100px; /* Set a fixed width for the loader */
+    height: auto; /* Keep the aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column; /* Stack the text and the moving line vertically */
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Height to center the content */
+  font-size: 1.5rem;
+  color: #555;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  margin: 20px;
+  text-align: center;
+  position: relative; /* To position the moving line */
+  overflow: hidden; /* To keep the animation within bounds */
+}
+
+.moving-line {
+  width: 100%; /* Span across the container */
+  height: 2px; /* Thin line */
+  background-color: #555; /* Line color matching the text */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: move-line 2s infinite linear; /* Infinite animation */
+}
+
+/* Animation keyframes */
+@keyframes move-line {
+  0% {
+      transform: translateX(-100%);
   }
+  100% {
+      transform: translateX(100%);
+  }
+}
+
+
   

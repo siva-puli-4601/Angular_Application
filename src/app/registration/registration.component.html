@@ -7,9 +7,13 @@
           <label for="Usrname">Username</label>
           <input [class.is-invalid]="reactiveform.get('username').invalid && reactiveform.get('username').touched" formControlName="username" type="text"/>
           <div *ngIf="reactiveform.get('username').invalid && reactiveform.get('username').touched">
-            <small *ngIf="reactiveform.get('username').errors?.required">Username is required</small>
-            <small *ngIf="reactiveform.get('username').errors?.minlength">Username must be at least 4 characters</small>
+            <small *ngIf="reactiveform.get('username').errors?.required else len">Username is required</small>
+            <ng-template #len>
+              <small *ngIf="reactiveform.get('username').errors?.minlength else err">Username must be at least 4 characters</small>
+            </ng-template>
+          <ng-template #err>
             <small *ngIf="reactiveform.get('username').errors?.errorUsername">{{ reactiveform.get('username').errors.errorUsername.value }} is not a valid username</small>
+          </ng-template>
           </div>
         </div>
 
@@ -33,7 +37,7 @@
         <div class="form-group">
           <label for="ConformPassword">Confirm Password</label>
           <input formControlName="conformpass" type="password"/>
-          <small *ngIf="reactiveform.errors?.erroemsg">{{reactiveform.errors.erroemsg.value}} Password Mismatch</small>
+          <small *ngIf="reactiveform.get('conformpass').touched && reactiveform.errors?.erroemsg">{{reactiveform.errors.erroemsg.value}} Password Mismatch</small>
         </div>
       </div>
 

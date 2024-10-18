@@ -19,12 +19,13 @@ export class LeaverequestsComponent implements OnInit {
    alert("failed to get data");
   })
   }
-  acceptLeave(email:any)
+  acceptLeave(email:string,id:any)
   {
    
     const data={
+      'id':id,
       'email':email,
-      'status':"accepted"
+      'status':"Accepted"
     };
     console.log(data);
      this.ser.postApi("leavechange",data).subscribe((data: any)=>{
@@ -35,11 +36,12 @@ export class LeaverequestsComponent implements OnInit {
       alert("failed to accepted");
     })
   }
-  rejectLeave(email:any)
+  rejectLeave(email:string,id:any)
   {
     const data={
+      'id':id,
       'email':email,
-      'status':"accepted"
+      'status':"Rejected"
     };
      this.ser.postApi("leavechange",data).subscribe((data: any)=>{
         alert("sucessfully rejected");

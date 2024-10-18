@@ -3,8 +3,11 @@
   </div>
   
   <div class="employee-cards">
-    
-   
+    <div *ngIf="!records.length && !loading" class="no-results">
+      <span>No results found.</span>
+      <div class="moving-line"></div>
+  </div>
+  
       <div *ngFor="let record of records" class="employee-card">
         <img [src]="record.profile" alt="Profile Picture" class="profile-pic">
         <div class="employee-info">
@@ -14,10 +17,9 @@
         </div>
       </div>
     
-    
   </div>
-  
   <div *ngIf="loading" class="loading-indicator">
-    <img src="https://hubble.miraclesoft.com/assets/loader/Hubble.gif" alt="no Image">
-  </div>
+    <img src="https://hubble.miraclesoft.com/assets/loader/Hubble.gif" alt="Loading...">
+</div>
+
   

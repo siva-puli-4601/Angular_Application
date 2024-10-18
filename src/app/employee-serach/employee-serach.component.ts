@@ -3,14 +3,21 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DataService } from '../data.service';
 
+type rec={
+  username:string,
+  email:string,
+  role:string,
+  profile:String
+}
 @Component({
   selector: 'app-employee-serach',
   templateUrl: './employee-serach.component.html',
   styleUrls: ['./employee-serach.component.css']
 })
+
 export class EmployeeSerachComponent implements OnInit {
 
-  records: any[] = [];
+  records: rec[] = [];
   page = 1;
   limit = 10;
   search = '';
@@ -26,7 +33,7 @@ export class EmployeeSerachComponent implements OnInit {
     this.getRecords();
 
     this.searchSubject.pipe(
-      debounceTime(300), // Wait 300ms after the last event before emitting the last event
+      debounceTime(500), // Wait 300ms after the last event before emitting the last event
       distinctUntilChanged(), // Only emit if the current value is different from the last
       takeUntil(this.unsubscribe$)
     ).subscribe(searchTerm => {

@@ -22,6 +22,7 @@ body {
 }
 
 .form-wrapper {
+  position: relative; /* Allows the overlay to position absolutely */
   background-color: #18a7d3;
   padding: 20px;
   border-radius: 25px;
@@ -29,13 +30,38 @@ body {
   max-width: 400px;
   width: 100%;
   margin-right: 20px; /* Space between form and GIF */
+  background-image: url('https://hubble.miraclesoft.com/assets/img/bg-login.jpg');
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: white; /* Sets the text color to white for better contrast */
+  overflow: hidden; /* Ensures the overlay stays within the border radius */
 }
+
+.form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(36, 183, 202, 0.5); /* Semi-transparent overlay */
+  border-radius: 25px; /* Matches the parent border radius */
+  z-index: 0; /* Places the overlay behind the text */
+}
+
+.form-wrapper * {
+  position: relative;
+  z-index: 1; /* Ensures text and other elements appear above the overlay */
+}
+
+
 
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #333;
+  color: #0c0c0c;
 }
 
 input[type="email"],

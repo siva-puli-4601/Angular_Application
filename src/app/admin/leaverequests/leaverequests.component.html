@@ -21,8 +21,8 @@
         <td>{{ leave.reason }}</td>
         <td>{{ leave.leavetype }}</td>
         <td>
-          <button class="accept-button" (click)="acceptLeave(leave.mail)">Accept</button>
-          <button class="reject-button" (click)="rejectLeave(leave.mail)">Reject</button>
+          <button class="accept-button" (click)="acceptLeave(leave.mail,leave.id)">Accept</button>
+          <button class="reject-button" (click)="rejectLeave(leave.mail,leave.id)">Reject</button>
         </td>
       </tr>
     <!-- </tr> -->
