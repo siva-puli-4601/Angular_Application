@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       }
       else
       {
-        this.route.navigate(["/"]);
+        this.route.navigate(["/student"]);
       }
     },
   (err)=>

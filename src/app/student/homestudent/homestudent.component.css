@@ -9,7 +9,162 @@
     display: flex;
     flex: 1;
   }
-  
+  .layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+.app-sidebar {
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Make the content area take full width when the sidebar is hidden */
+.content-area.full-width {
+    margin-left: 0;
+    width: 100%;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-button img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the GIF when sidebar is hidden */
+.toggle-button img.rotate {
+    transform: rotate(180deg);
+}.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.sidebar-container {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+/* Sidebar styles */
+.app-sidebar {
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+/* Content area styles */
+.content-area {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Make the content area take full width when the sidebar is hidden */
+.content-area.full-width {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Toggle button styling */
+.toggle-button {
+  position: absolute;
+  top: 20px;
+  left: 220px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: left 0.3s ease;
+}
+
+.toggle-button img {
+  width: 15px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Adjust the button's position when the sidebar is hidden */
+.sidebar-container .toggle-button.hidden {
+  left: 10px;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
+/* Responsive styles for mobile and smaller screens */
+@media (max-width: 768px) {
+  .app-sidebar {
+      width: 200px; /* Reduce sidebar width for smaller screens */
+  }
+
+  .toggle-button {
+      top: 10px; /* Adjust for mobile */
+      left: 180px; /* Adjust to fit next to the reduced sidebar */
+  }
+
+  /* Move the button when the sidebar is hidden on mobile */
+  .sidebar-container .toggle-button.hidden {
+      left: 5px; /* Further to the left on smaller screens */
+  }
+
+  .content-area {
+      padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  /* Adjust the toggle button size for mobile */
+  .toggle-button img {
+      width: 20px; /* Smaller size on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .app-sidebar {
+      width: 150px; /* Further reduce sidebar width for very small screens */
+  }
+
+  .toggle-button {
+      left: 140px; /* Adjust to fit next to the smaller sidebar */
+  }
+}
+
+
+app-footer {
+    margin-top: auto;
+}
+
   .app-sidebar {
     width: 250px;
   }

@@ -1,0 +1,19 @@
+<!-- student-dashboard.component.html -->
+<div class="dashboard">
+    <div class="welcome-message" *ngIf="!hasPreviousChats">
+        <h2>Welcome to AI Learning</h2>
+        <button class="new-chat-button" (click)="startNewChat()">New Chat</button>
+    </div>
+
+    <div class="chat-container" *ngIf="hasPreviousChats">
+        
+        <div class="previous-chats">
+            <h3>Previous Chats</h3>
+            <ul>
+                <li *ngFor="let chat of previousChats" (click)="openChat(chat)">
+                    {{ chat.title }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

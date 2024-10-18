@@ -29,7 +29,7 @@ const routes: Routes = [
       component: HomeComponentEmployee,
       children: [
         { path: '', component: DashboardComponent },
-    {path: 'employee', loadChildren: () => import('./Employees/empl-module.module').then(m => m.EmplModuleModule), canActivate:[CheckGuardGuard]}
+        {path: 'employee', loadChildren: () => import('./Employees/empl-module.module').then(m => m.EmplModuleModule), canActivate:[CheckGuardGuard]}
       ]
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
     component: HomestudentComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule) },
+      { path: 'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule), canActivate:[CheckGuardGuard] },
       
       // Define other routes here
     ]
