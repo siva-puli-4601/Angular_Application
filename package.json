@@ -24,6 +24,7 @@
     "markdown": "^0.5.0",
     "marked": "^14.1.2",
     "ngx-swiper-wrapper": "^10.0.0",
+    "primeng": "^14.2.3",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-stringify": "^11.0.0",

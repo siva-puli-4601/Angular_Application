@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
- 
+import { CalendarModule } from 'primeng/calendar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { RatingModule } from 'primeng/rating';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -23,7 +23,7 @@ import { TimesheetsShowComponent } from './timesheets-show/timesheets-show.compo
 import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error.interceptor';
 import { ChatUiComponent } from './chat-ui/chat-ui.component';
-
+import { SliderModule } from 'primeng/slider';
 
 // import { MatCalendar } from '@angular/material/calendar';
 
@@ -47,7 +47,10 @@ import { ChatUiComponent } from './chat-ui/chat-ui.component';
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
+    RatingModule,
+    SliderModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }

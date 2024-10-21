@@ -5,16 +5,16 @@
         <label for="email">Email...</label>
         <input id="email" formControlName="email" type="email" />
         <div *ngIf="ReactiveForm.get('email')?.invalid && ReactiveForm.get('email')?.touched">
-          <small *ngIf="ReactiveForm.get('email')?.errors?.required">Please enter an email</small>
+
+          <small *ngIf="ReactiveForm.get('email')?.errors?.required else comp">Please enter an email</small>
+          <ng-template #comp>
           <small *ngIf="ReactiveForm.get('email')?.errors?.mailError">{{ReactiveForm.get('email')?.errors?.mailError.value}} not a valid email</small>
+        </ng-template>
         </div><br>
 
         <label for="password">Password...</label>
         <input id="password" formControlName="password" type="password" />
-        <div *ngIf="ReactiveForm.get('password')?.invalid && ReactiveForm.get('password')?.touched">
-          <small *ngIf="ReactiveForm.get('password')?.errors?.required">Please enter a password</small>
-          <small *ngIf="ReactiveForm.get('password')?.errors?.mailError">{{ReactiveForm.get('password')?.errors?.mailError.value}} not a valid password</small>
-        </div><br>
+        <br>
 
         <button type="submit" [disabled]="ReactiveForm.invalid">Submit</button>
       </form>

@@ -25,8 +25,7 @@ const routes: Routes = [
   {path:"profile", component:ProfileComponent, canActivate:[CheckGuardGuard]},
    
     {
-      path: '',
-      component: HomeComponentEmployee,
+      path: '', component: HomeComponentEmployee,
       children: [
         { path: '', component: DashboardComponent },
         {path: 'employee', loadChildren: () => import('./Employees/empl-module.module').then(m => m.EmplModuleModule), canActivate:[CheckGuardGuard]}
