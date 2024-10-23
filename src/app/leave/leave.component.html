@@ -1,5 +1,5 @@
-
 <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="form-row">
     <div class="form-group">
       <label for="startDate">Start Date:</label>
       <input type="date" id="startDate" formControlName="startDate" class="form-spe" />
@@ -26,24 +26,25 @@
         Leave type is required.
       </div>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="aiPrompt">AI Prompt:</label>
-      <input type="text" id="aiPrompt"  #reason class="form-control" placeholder="Enter prompt for AI">
-    </div>
+  <div class="form-group">
+    <label for="aiPrompt">AI Prompt:</label>
+    <input type="text" id="aiPrompt" #reason class="form-control" placeholder="Enter prompt for AI">
+  </div>
   
-    <button type="button" class="btn btn-secondary" (click)="generateReason(reason.value)">Generate Reason</button>
-  
-    <div class="form-group">
-      <label for="reason">Reason:</label>
-      <textarea id="reason" formControlName="reason" class="form-control" rows="4" placeholder="Explain the purpose of your leave"></textarea>
-      <div *ngIf="leaveForm.get('reason').invalid && leaveForm.get('reason').touched" class="error">
-        Reason is required.
-      </div>
-    </div>
-  
-    <button type="submit" class="btn btn-primary" [disabled]="leaveForm.invalid">Submit</button>
-  </form><br>
-  <a [routerLink]="role+'/checkleaves'" class="btn1">Check Previous Leaves</a>
+  <button type="button" class="btn btn-secondary" (click)="generateReason(reason.value)">Generate Reason</button>
 
+  <div class="form-group">
+    <label for="reason">Reason:</label>
+    <textarea id="reason" formControlName="reason" class="form-control" rows="4" placeholder="Explain the purpose of your leave"></textarea>
+    <div *ngIf="leaveForm.get('reason').invalid && leaveForm.get('reason').touched" class="error">
+      Reason is required.
+    </div>
+  </div>
   
+  <button type="submit" class="btn btn-primary" [disabled]="leaveForm.invalid">Submit</button>
+</form>
+
+<br>
+<a [routerLink]="role+'/checkleaves'" class="btn1">Check Previous Leaves</a>

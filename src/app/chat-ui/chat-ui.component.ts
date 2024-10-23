@@ -7,6 +7,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkHtml from 'remark-html';
 import hljs from 'highlight.js';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 interface Message {
@@ -26,14 +27,14 @@ interface ChatSession {
 })
 
 export class ChatUiComponent {
+  ReactiveForm:any;
   isSidebarHidden:any = false;
   displaydata:any;
-  userInput: string = '';  // For two-way binding to textarea input
   previousChats: ChatSession[] = [];  // Stores previous chats
   currentChat: ChatSession = { date: new Date(), messages: [] };  // Current chat session
   isDarkTheme: boolean = false;  // Toggle between dark and light themes
 
-  constructor(private renderer: Renderer2, private ser: DataService) {
+  constructor(private renderer: Renderer2, private ser: DataService,private fb: FormBuilder) {
     marked.setOptions({
       highlight: function (code:any, lang:any) {
         return hljs.highlightAuto(code).value;
@@ -52,10 +53,16 @@ export class ChatUiComponent {
       this.renderer.addClass(document.documentElement, 'dark-theme');
     }
   }
+  ngOnInit()
+  {
+    this.ReactiveForm = this.fb.group({
+      userInput:['',Validators.required]
+    })
+  }
 
   // Sends the user's message and handles bot's response
   sendMessage() {
-    const data = this.userInput;
+    const data = this.ReactiveForm.get('userInput')?.value;
     if (data.trim()) {
       // Add the user's message to the current chat
       this.currentChat.messages.push({ text: data, sender: 'user' });
@@ -92,7 +99,9 @@ export class ChatUiComponent {
       }, 1000);  // Adjust delay time for response simulation
   
       // Clear the input after sending
-      this.userInput = '';  // Reset the userInput bound to textarea
+      this.ReactiveForm.patchValue({
+        userInput:""
+      })  // Reset the userInput bound to textarea
     }
   }
   
@@ -132,5 +141,12 @@ export class ChatUiComponent {
       this.renderer.removeClass(document.documentElement, 'dark-theme');
       localStorage.setItem('theme', 'light');
     }
+  }
+  handleEnter(event: KeyboardEvent) {
+    // Prevent the default behavior of pressing enter (like creating a new line)
+    event.preventDefault();
+  
+    // Call the sendMessage method when Enter key is pressed
+    this.sendMessage();
   }
 }

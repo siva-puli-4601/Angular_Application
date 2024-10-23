@@ -147,14 +147,14 @@ body {
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    padding: 14px 24px;
-    font-size: 18px;
+    padding: 12px 20px;
+    font-size: 15px;
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s;
     margin-top: 20px;
     display: block;
-    width: 100%;
+    width: 20%;
     text-align: center;
   }
   

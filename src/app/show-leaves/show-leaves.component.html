@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let leave of leaveData">
+      <tr *ngFor="let leave of leaveData.slice().reverse()">
         
         <td>{{ leave.startdate | date }}</td>
         <td>{{ leave.enddate | date }}</td>

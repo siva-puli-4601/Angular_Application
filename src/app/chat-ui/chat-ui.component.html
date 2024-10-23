@@ -16,9 +16,9 @@
     <img src="assets/toogle.jfif" alt="Open" class="close-icon" (click)="toggleSidebar()" *ngIf="isSidebarHidden"/>
 
     <!-- Theme toggle button -->
-    <div class="theme-toggle">
+    <!-- <div class="theme-toggle">
       <button (click)="toggleTheme()">{{ isDarkTheme ? '🌞 Light' : '🌙 Dark' }}</button>
-    </div>
+    </div> -->
 
     <div class="chat-box">
       <div *ngFor="let message of currentChat.messages" class="message-wrapper" 
@@ -30,10 +30,17 @@
     </div>
 
     <!-- Chat input -->
-    <div class="chat-input-container">
-      <textarea [(ngModel)]="userInput" placeholder="Type your message..." rows="1" ></textarea>
-      <button (click)="sendMessage()">Send</button>
-      <button (click)="saveChat()">Save</button>
-    </div>
+    <form [formGroup]="ReactiveForm" (ngSubmit)="sendMessage()" class="chat-input-form">
+      <div class="chat-input-container">
+        <input 
+          formControlName="userInput" 
+          placeholder="Type your message..." 
+          class="chat-input" 
+        />
+        <button type="submit" class="send-button">Send</button>
+      </div>
+      <button type="button" (click)="saveChat()" class="save-button">Save</button>
+    </form>
+    
   </div>
 </div>

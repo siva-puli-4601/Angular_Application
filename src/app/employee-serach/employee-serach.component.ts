@@ -3,19 +3,20 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DataService } from '../data.service';
 
-type rec={
-  username:string,
-  email:string,
-  role:string,
-  profile:String
-}
+type rec = {
+  username: string;
+  email: string;
+  role: string;
+  profile: string;
+};
+
 @Component({
   selector: 'app-employee-serach',
   templateUrl: './employee-serach.component.html',
   styleUrls: ['./employee-serach.component.css']
 })
 
-export class EmployeeSerachComponent implements OnInit {
+export class EmployeeSerachComponent implements OnInit, OnDestroy {
 
   records: rec[] = [];
   page = 1;
@@ -23,18 +24,20 @@ export class EmployeeSerachComponent implements OnInit {
   search = '';
   loading = false;
   allRecordsLoaded = false;
+  selectedRole = '';
+  roles: string[] = ['admin', 'employee', 'student'];
 
   private searchSubject = new Subject<string>();
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private recordsService:DataService ) { }
+  constructor(private recordsService: DataService) { }
 
   ngOnInit(): void {
     this.getRecords();
 
     this.searchSubject.pipe(
-      debounceTime(500), // Wait 300ms after the last event before emitting the last event
-      distinctUntilChanged(), // Only emit if the current value is different from the last
+      debounceTime(500),
+      distinctUntilChanged(),
       takeUntil(this.unsubscribe$)
     ).subscribe(searchTerm => {
       this.search = searchTerm;
@@ -54,21 +57,20 @@ export class EmployeeSerachComponent implements OnInit {
     if (this.loading || this.allRecordsLoaded) return;
 
     this.loading = true;
-    this.page, this.limit, this.search
-    const data={
-     "page": this.page,
-     "limit": this.limit,
-     "search": this.search,
-     
-    }
-    this.recordsService.postApi("employeesearch",data)
-      .subscribe((response: any) => {
-        if (response.message.length < this.limit) {
-          this.allRecordsLoaded = true;
-        }
-        this.records = [...this.records, ...response.message];
-        this.loading = false;
-      });
+    const data = {
+      page: this.page,
+      limit: this.limit,
+      search: this.search,
+      role: this.selectedRole // Add role filtering to the request
+    };
+
+    this.recordsService.postApi('employeesearch', data).subscribe((response: any) => {
+      if (response.message.length < this.limit) {
+        this.allRecordsLoaded = true;
+      }
+      this.records = [...this.records, ...response.message];
+      this.loading = false;
+    });
   }
 
   @HostListener('window:scroll', [])
@@ -80,7 +82,29 @@ export class EmployeeSerachComponent implements OnInit {
   }
 
   onSearchChange(searchValue: any): void {
-    const value=searchValue.target.value;
+    const value = searchValue.target.value;
     this.searchSubject.next(value);
+  }
+
+  onRoleChange(): void {
+    if(this.search=='')
+    {
+    this.page = 1;
+    this.allRecordsLoaded = false;
+    this.records = [];
+    this.getRecords();
+    }
+    else if(this.search==='' && this.selectedRole!='')
+    {
+      this.records=this.records.filter((record)=>record.role=this.selectedRole);
+    }
+    else
+    {
+      this.page = 1;
+      this.allRecordsLoaded = false;
+      this.records = [];
+      this.getRecords();
+    }
+    
   }
 }

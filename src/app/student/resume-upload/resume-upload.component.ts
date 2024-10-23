@@ -9,6 +9,7 @@ import { DataService } from 'src/app/data.service';
 })
 export class ResumeUploadComponent {
   resumeForm: any;
+  loading:any=false;
 
   constructor(private fb: FormBuilder,private ser: DataService) {
     // Initialize the form group with form controls
@@ -36,9 +37,10 @@ export class ResumeUploadComponent {
       formData.append('resume', this.resumeForm.get('resumeFile')?.value);
 
       console.log('Form Submitted:', formData.get('email'));
-
+      this.loading = true;
       this.ser.postApi("upload-resume", formData).subscribe((data)=>
       {
+        this.loading = false;
          window.alert("resume submited");
          this.resumeForm.reset();
       },

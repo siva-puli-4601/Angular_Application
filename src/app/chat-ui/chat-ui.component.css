@@ -98,20 +98,65 @@
   border-bottom-left-radius: 0;
 }
 
-.chat-input-container {
-  padding: 10px;
-  border-top: 1px solid #ddd;
+.chat-input-form {
   display: flex;
+  align-items: center;
+  padding: 10px; /* Add padding for better spacing */
+  background-color: #f9f9f9; /* Light background for input area */
+  border-top: 1px solid #ddd; /* Top border for separation */
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  resize: none;
+.chat-input-container {
+  flex: 1; /* Allow the input to take up available space */
+  display: flex; /* Flex layout for input and button */
+  align-items: center; /* Center vertically */
 }
+
+.chat-input {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding for input */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.chat-input:focus {
+  outline: none; /* Remove default outline */
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.send-button {
+  padding: 10px 15px; /* Padding for button */
+  margin-left: 10px; /* Space between input and button */
+  background-color: #007bff; /* Primary color for send button */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.send-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.save-button {
+  padding: 10px 15px; /* Padding for save button */
+  margin-left: 10px; /* Space between buttons */
+  background-color: #6c757d; /* Secondary color for save button */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.save-button:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+}
+
 
 button {
   margin-left: 10px;
@@ -146,7 +191,7 @@ code {
 
 /* Close icon for sidebar and previous chats */
 .close-icon {
-  width: 20px; /* Adjust size of the GIF */
+  width: 40px; /* Adjust size of the GIF */
   cursor: pointer;
   float: right; /* Align to the right */
 }
